@@ -31,9 +31,3 @@ The application is built with **FastAPI** and deployed on **Render** for live pr
 
 ---
 
-## ▶️ Run Locally
-
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/YOUR-USERNAME/AgroLeafAI.git
-cd AgroLeafAI
