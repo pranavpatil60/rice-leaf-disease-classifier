@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rice Leaf Classifier</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+    
+    body {
+        background: linear-gradient(135deg, #d4edda 0%, #a8e6cf 100%);
+        min-height: 100vh;
+        display: flex; justify-content: center; align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        max-width: 450px; width: 100%;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.3);
+        transition: transform 0.3s ease;
+    }
+
+    h1 {
+        font-weight: 700; color: #145214;
+        margin-bottom: 10px; font-size: 1.8rem;
+    }
+
+    p { color: #555; font-size: 0.9rem; margin-bottom: 30px; }
+
+    /* Custom File Input Styling */
+    .file-input-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+        border: 2px dashed #2ecc71;
+        border-radius: 15px;
+        padding: 30px 10px;
+        transition: 0.3s;
+        background: rgba(46, 204, 113, 0.05);
+    }
+
+    .file-input-wrapper:hover {
+        background: rgba(46, 204, 113, 0.1);
+        border-color: #27ae60;
+    }
+
+    input[type="file"] {
+        position: absolute; left: 0; top: 0; opacity: 0;
+        width: 100%; height: 100%; cursor: pointer;
+    }
+
+    .upload-icon { font-size: 40px; display: block; margin-bottom: 10px; }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 15px;
+        background: #2ecc71;
+        color: white;
+        font-size: 1rem; font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+    }
+
+    button:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+    }
+
+    footer { margin-top: 20px; font-size: 0.8rem; color: #666; }
+</style>
+</head>
+<body>
+<div class="container">
+    <span class="upload-icon">🍃</span>
+    <h1>Rice Leaf AI</h1>
+    <p>Select any image (JPG, PNG, etc.) to analyze</p>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <div class="file-input-wrapper">
+            <span id="file-label" style="color: #145214; font-weight: 600;">Click to Choose Image</span>
+            <input type="file" name="file" accept="image/*" required onchange="showName(this)">
+        </div>
+        <button type="submit">Predict Health</button>
+    </form>
+    
+    <footer>Powered by Deep Learning</footer>
+</div>
+
+<script>
+    function showName(input) {
+        let label = document.getElementById('file-label');
+        label.innerText = input.files[0].name;
+    }
+</script>
+</body>
+</html>
